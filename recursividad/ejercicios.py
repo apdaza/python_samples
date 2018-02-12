@@ -34,6 +34,21 @@ def suma_digitos_recursivo(n):
     return n % 10 + suma_digitos_recursivo(int(n/10)) 
 
 # 6. determinar si un numero es palíndromo
+def ultimo_digito(n):
+    return n % 10
+
+def primer_digito(n):
+    if n < 10:
+        return n
+    return primer_digito(int(n / 10))
+
+def quitar_extremos(n):
+    pass
+
+def palindromo_recursivo(n):
+    if n < 10:
+        return True
+    return (primer_digito(n) == ultimo_digito(n)) and palindromo_recursivo(quitar_extremos(n))
 # 7. calcular la longitud de un número entero
 # 8. determinar el mayor digito de un número entero positivo
 # 9. invertir un número entero positivo
