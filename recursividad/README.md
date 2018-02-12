@@ -8,3 +8,4 @@
 6. determinar si un numero es palíndromo
 7. calcular la longitud de un número entero
 8. determinar el mayor digito de un número entero positivo
+9. invertir un número entero positivo
