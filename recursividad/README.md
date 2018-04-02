@@ -9,3 +9,11 @@
 7. calcular la longitud de un número entero
 8. determinar el mayor digito de un número entero positivo
 9. invertir un número entero positivo
+
+# arboles binarios
+1. buscar un valor en un arbol binario ordenado
+2. insertar un valor en un arbol binario ordenado
+3. recorrido en inorden
+4. recorrido en proorden
+5. recorrido en postorden
+6. insertar lista de valores en un arbol binario ordenado
