@@ -52,3 +52,36 @@ def palindromo_recursivo(n):
 # 7. calcular la longitud de un número entero
 # 8. determinar el mayor digito de un número entero positivo
 # 9. invertir un número entero positivo
+
+##arbol binario
+class Nodo:
+    def __init__(self, val, izq = None, der = None):
+        self.valor = val
+        self.izquierda = izq
+        self.derecha = der
+def arbol():
+    return Nodo(15, Nodo(10), Nodo(25))
+
+#1. buscar un valor en un arbol binario ordenado
+
+#2. insertar un valor en un arbol binario ordenado
+def insertar(arbol, valor):
+    if arbol == None:
+        return Nodo(valor)
+    if valor < arbol.valor:
+        return Nodo(arbol.valor, insertar(arbol.izquierda, valor), arbol.derecha)
+    return Nodo(arbol.valor, arbol.izquierda, insertar(arbol.derecha, valor))
+
+#3. recorrido en inorden
+def inorden(arbol):
+    if arbol == None:
+        return []
+    return inorden(arbol.izquierda) + [arbol.valor] + inorden(arbol.derecha)
+
+#4. recorrido en proorden
+#5. recorrido en postorden
+#6. insertar lista de valores en un arbol binario ordenado
+def lista_arbol(arbol, lista):
+    if lista == []:
+        return arbol
+    return lista_arbol(insertar(arbol, lista[0]), lista[1:])
