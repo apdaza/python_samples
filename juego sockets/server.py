@@ -13,19 +13,40 @@ El servidor no acepta multiples clientes simultaneamente.
 import socket
 from threading import Thread
 
+class Gost():
+    __instance = None
 
-#Clase con el hilo para atender a los clientes.
-#En el constructor recibe el socket con el cliente y los datos del
-#cliente para escribir por pantalla
+    def __new__(cls):
+        if Gost.__instance is None:
+            Gost.__instance = object.__new__(cls)
+        return SoyUnico.__instance
+
+    def __init__(self):
+        self.x = 100
+        self.y = 200
+
+    def mover(self):
+        self.x = self.x+10
+        self.x = self.x % 800
+        self.y = 200
+
+    def getPos(self):
+        return str(self.x)+","+str(self.y)
+
 class Cliente(Thread):
-    def __init__(self, server, socket_cliente, datos_cliente):
+    def __init__(self, server, socket_cliente, datos_cliente, gost, hermanos = []):
         Thread.__init__(self)
         self.server = server
         self.socket = socket_cliente
         self.datos = datos_cliente
+        self.gost = gost
+        self.hermanos = hermanos
 
     def send_msg(self, msg):
         self.socket.send(msg)
+
+    def set_hermanos(self, hermanos):
+        self.hermanos = hermanos
 
     # Bucle para atender al cliente.
     def run(self):
@@ -35,11 +56,12 @@ class Cliente(Thread):
          # Espera por datos
          peticion = self.socket.recv(1024)
          print peticion
+         #self.socket.send(peticion)
 
          # Contestacion a "hola"
          if ("hola"==peticion):
              print str(self.datos)+ " envia hola: contesto"
-             self.socket.send("pues hola")
+             self.socket.send(str(self.gost.getPos()))
 
          # Contestacion y cierre a "adios"
          elif ("adios"==peticion):
@@ -54,27 +76,37 @@ class Cliente(Thread):
              break
          else:
             print str(self.datos)+ " envia otra cosa: y no me importa"
-            self.socket.send("y a mi que")
+            self.socket.sendall(self.gost.getPos())
+            self.gost.mover()
+            """if self.hermanos != []:
+                for i in self.hermanos:
+                    i.socket.sendall(peticion)"""
 
 
 
 
 if __name__ == '__main__':
+   #contador = 0
    # Se prepara el servidor
    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-   server.bind(("", 8094))
-   server.listen(1)
+   server.bind(("", 5050))
+   server.listen(10)
    print "Esperando clientes..."
-
+   hilos = []
+   gost = Gost()
    # bucle para atender clientes
    while 1:
 
       # Se espera a un cliente
       socket_cliente, datos_cliente = server.accept()
-
+      #contador = contador + 1
       # Se escribe su informacion
       print "conectado "+str(datos_cliente)
 
       # Se crea la clase con el hilo y se arranca.
-      hilo = Cliente(server, socket_cliente, datos_cliente)
-      hilo.start()
+      hilos.append(Cliente(server, socket_cliente, datos_cliente, gost))
+      hilos[-1].start()
+      gost.x=gost.x+10
+
+      """for i in hilos:
+          i.set_hermanos(hilos)"""

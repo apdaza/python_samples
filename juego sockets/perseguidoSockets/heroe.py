@@ -11,7 +11,7 @@ class Heroe(Sprite):
             cls.instance = object.__new__(cls, *args, **kargs)
         return cls.instance
 
-    def __init__(self):
+    def __init__(self,id):
         Sprite.__init__(self)
         self.sentido = 0
         self.cont = 0
@@ -37,6 +37,16 @@ class Heroe(Sprite):
 
     def getPos(self):
         return (self.rect.x, self.rect.y)
+
+    def getMovimiento(self):
+        if self.sentido == 1:
+            return "left"
+        elif self.sentido == 0:
+            return "right"
+        elif self.sentido == 3:
+            return "up"
+        elif self.sentido == 2:
+            return "down"
 
     def update(self):
         teclas = pygame.key.get_pressed()
@@ -67,10 +77,7 @@ class Heroe(Sprite):
                 self.rect.x = oldx
                 self.rect.y = oldy
 
-        for n in self.enemigos:
-            if self.rect.colliderect(n.rect):
-                self.msg = self.msgs[1]
-                self.vida -= 1
+        
 
     def draw(self, screen):
         fuente = pygame.font.Font(None, 20)

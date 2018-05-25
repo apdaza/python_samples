@@ -5,6 +5,7 @@ from pygame.locals import *
 from random import *
 from wall import *
 from heroe import *
+from heroe_remoto import *
 from villano import *
 from tablero import *
 from constructores import *
@@ -26,11 +27,13 @@ def ordenar(lista):
 
 
 def game():
+    #id = ""
 	# Se establece la conexion
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect(("localhost", 8094))
+    s.connect(("localhost", 5050))
 	# Se envia "hola"
     s.send("hola")
+    s.recv(1000)
     pygame.init()
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -45,61 +48,58 @@ def game():
     director = Director()
     director.setBuilder(ConstructorHumanos())
 
-    heroe = director.getHeroe()
+    heroe = director.getHeroe("1")
     heroe.ubicar(tablero.pos_heroe)
+    director.setBuilder(ConstructorEsqueletos())
+    heroe_remoto = director.getHeroeRemoto()
+    heroe_remoto.ubicar(tablero.pos_heroe)
 
     walls = []
     villanos = []
-    """for i in tablero.lista:
-        walls.append(Wall(i))
 
-
-    for i in tablero.enemigos:
-        copia_villano = copy.copy(villano)
-        villanos.append(copia_villano)
-"""
     ejecutando = True
     jugando = False
     while ejecutando:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                s.send("cerrar")
                 ejecutando = False
                 sys.exit()
         teclas = pygame.key.get_pressed()
         if teclas[K_SPACE]:
             heroe.ubicar(tablero.pos_heroe)
+            heroe_remoto.ubicar(tablero.pos_heroe)
             jugando = True
             heroe.vida = 100
             heroe.puntos = 0
+            heroe_remoto.vida = 100
+            heroe_remoto.puntos = 0
             tablero.reiniciar((SCREEN_WIDTH, SCREEN_HEIGHT))
             walls = []
             villanos = []
             for i in tablero.lista:
                 walls.append(Wall(i))
 
-            villano = Villano((0,0))
-            for i in tablero.enemigos:
-                villano_copia = villano.copiar(i)
-                villanos.append(villano_copia)
-
         if jugando:
             heroe.walls = walls
-            heroe.enemigos = villanos
+
+            heroe_remoto.walls = walls
+            
             screen.blit(background_image, (0, 0))
 
             fuente = pygame.font.Font(None, 30)
             texto_puntos = fuente.render("Puntos: " + str(heroe.puntos), 1, (250, 250, 250))
             texto_vida = fuente.render("Vida: " + str(heroe.vida), 1, (250, 250, 250))
             heroe.update()
-            s.send(str(heroe.getPos()[0])+" , "+str(heroe.getPos()[1]))
+            s.send(heroe.getMovimiento())
+            datos = s.recv(1000)
+            print "recibi -> " + datos
+            heroe_remoto.update(datos)
+
             for n in walls:
                 screen.blit(n.image, n.rect)
             heroe.draw(screen)
-            for n in villanos:
-                n.walls = walls
-                n.partners = villanos
-                n.update()
-                screen.blit(n.image, n.rect)
+            heroe_remoto.draw(screen)
 
             if heroe.vida <= 0:
                 puntos = open('puntaje.txt', 'r')
@@ -142,5 +142,5 @@ def game():
 
 
 if __name__ == '__main__':
-	
+
     game()

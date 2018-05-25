@@ -1,5 +1,6 @@
 from fabricas import *
 from heroe import *
+from heroe_remoto import *
 
 class Director:
     __builder = None
@@ -7,8 +8,15 @@ class Director:
     def setBuilder(self, builder):
         self.__builder = builder
 
-    def getHeroe(self):
-        heroe = Heroe()
+    def getHeroe(self,id):
+        heroe = Heroe(id)
+        heroe.set_sprites(self.__builder.get_sprites())
+        heroe.set_mensajes(self.__builder.get_mensajes())
+
+        return heroe
+
+    def getHeroeRemoto(self):
+        heroe = HeroeRemoto()
         heroe.set_sprites(self.__builder.get_sprites())
         heroe.set_mensajes(self.__builder.get_mensajes())
 
