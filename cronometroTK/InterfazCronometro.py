@@ -14,7 +14,7 @@ class InterfaceCronometros(Thread):
 
         self.cadena = StringVar()
         #self.display = Entry(self.frame, textvariable=self.cadena)
-        self.display = Label(self.frame, textvariable=self.cadena, font=("Helvetica", 40))
+        self.display = Label(self.frame, textvariable=self.cadena, font=("Helvetica", 30))
         self.display.pack(side=TOP,padx=10,pady=10)
 
         self.buttonIniciar = Button(self.frame, text="Iniciar/Parar")
