@@ -99,42 +99,43 @@
 
 - y en la vista index.html
 
-<pre>
-    {{extend 'layout.html'}}
+<code>
+        {{extend 'layout.html'}}
 
-    {{block header}}
-    <div class="jumbotron jumbotron-fluid background" style="background-color: #333; color:white; padding:30px;word-wrap:break-word;">
-      <div class="container center">
-        <h1 class="display-5">/{{=request.application}}/{{=request.controller}}/{{=request.function}}</h1>
-      </div>
-    </div>
-    {{end}}
-
-    <div class="row">
-      <div class="col-md-12">
-        {{if 'message' in globals():}}
-        <h2>{{=message}}</h2>
-        aqui lo que queremos que se vea de texto plano
-          <table class="propios">
-              {{for i in regs:}}
-              <tr>
-                  <td class="propios">{{=i[0]}}</td>
-                  <td class="propios">{{=i[1]}}</td>
-                  <td class="propios">{{=i[2]}}</td>
-              </tr>
-              {{pass}}
-          </table>
-
-        <div class="jumbotron jumbotron-fluid" style="padding:30px;word-wrap:break-word;">
+        {{block header}}
+        <div class="jumbotron jumbotron-fluid background" style="background-color: #333; color:white; padding:30px;word-wrap:break-word;">
           <div class="container center">
-            Un ejemplo de web2py
+            <h1 class="display-5">/{{=request.application}}/{{=request.controller}}/{{=request.function}}</h1>
           </div>
         </div>
-        {{elif 'content' in globals():}}
-        {{=content}}
-        {{else:}}
-        {{=BEAUTIFY(response._vars)}}
-        {{pass}}
-      </div>
-    </div>
-</pre>
+        {{end}}
+
+        <div class="row">
+          <div class="col-md-12">
+            {{if 'message' in globals():}}
+            <h2>{{=message}}</h2>
+            aqui lo que queremos que se vea de texto plano
+              <table class="propios">
+                  {{for i in regs:}}
+                  <tr>
+                      <td class="propios">{{=i[0]}}</td>
+                      <td class="propios">{{=i[1]}}</td>
+                      <td class="propios">{{=i[2]}}</td>
+                  </tr>
+                  {{pass}}
+              </table>
+
+            <div class="jumbotron jumbotron-fluid" style="padding:30px;word-wrap:break-word;">
+              <div class="container center">
+                Un ejemplo de web2py
+              </div>
+            </div>
+            {{elif 'content' in globals():}}
+            {{=content}}
+            {{else:}}
+            {{=BEAUTIFY(response._vars)}}
+            {{pass}}
+          </div>
+        </div>
+
+</code>
