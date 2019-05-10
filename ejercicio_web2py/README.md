@@ -74,32 +74,37 @@
 
 - en default.py para crear las grid respectivas
 
-<pre>
-    @auth.requires_login()
-    def records_registration():
-       records = SQLFORM.grid(db.registration, user_signature=True)
-       return locals()
+<code>
 
-    @auth.requires_login()
-    def records_personal():
-       records = SQLFORM.grid(db.personal, user_signature=True)
-       return locals()
-</pre>
+        @auth.requires_login()
+        def records_registration():
+           records = SQLFORM.grid(db.registration, user_signature=True)
+           return locals()
+
+        @auth.requires_login()
+        def records_personal():
+           records = SQLFORM.grid(db.personal, user_signature=True)
+           return locals()
+           
+</code>
 
 
 - en default.py modificamos la función index()
 
-<pre>
-    def index():
-        response.flash = T("Hola mundo en web2py")
-        rawrows = db.executesql("select * from registration")
-        return dict(message=T('Ejemplo básico'), regs=rawrows)
-</pre>
+<code>
+
+        def index():
+            response.flash = T("Hola mundo en web2py")
+            rawrows = db.executesql("select * from registration")
+            return dict(message=T('Ejemplo básico'), regs=rawrows)
+
+</code>
 
 
 - y en la vista index.html
 
 <code>
+
         {{extend 'layout.html'}}
 
         {{block header}}
