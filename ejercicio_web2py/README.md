@@ -152,3 +152,20 @@
         </div>
 
 </code>
+
+- en static/css/propios.css
+
+<code>
+
+        table.propios {
+            width: 80%;
+            border: solid 1px;
+            margin: 20px;
+        }
+        td.propios{
+            border: 1px solid black;
+            background-color: lightblue;
+            padding: 15px;
+        }
+        
+</code>
