@@ -53,6 +53,7 @@
 
 - para crear las vistas se crean en views los archivos:
   - form_registration.html
+
 <pre>
     {{extend 'layout.html'}}
     <h5> User Registration Form </h5>
@@ -60,7 +61,9 @@
     {{=form}}
     <br  />
 </pre>
+
   - form_personal.html
+
 <pre>
     {{extend 'layout.html'}}
     <h5> User Registration Form </h5>
@@ -70,6 +73,7 @@
 </pre>
 
 - en default.py para crear las grid respectivas
+
 <pre>
     @auth.requires_login()
     def records_registration():
@@ -80,4 +84,57 @@
     def records_personal():
        records = SQLFORM.grid(db.personal, user_signature=True)
        return locals()
+</pre>
+
+
+- en default.py modificamos la función index()
+
+<pre>
+    def index():
+        response.flash = T("Hola mundo en web2py")
+        rawrows = db.executesql("select * from registration")
+        return dict(message=T('Ejemplo básico'), regs=rawrows)
+</pre>
+
+
+- y en la vista index.html
+
+<pre>
+    {{extend 'layout.html'}}
+
+    {{block header}}
+    <div class="jumbotron jumbotron-fluid background" style="background-color: #333; color:white; padding:30px;word-wrap:break-word;">
+      <div class="container center">
+        <h1 class="display-5">/{{=request.application}}/{{=request.controller}}/{{=request.function}}</h1>
+      </div>
+    </div>
+    {{end}}
+
+    <div class="row">
+      <div class="col-md-12">
+        {{if 'message' in globals():}}
+        <h2>{{=message}}</h2>
+        aqui lo que queremos que se vea de texto plano
+          <table class="propios">
+              {{for i in regs:}}
+              <tr>
+                  <td class="propios">{{=i[0]}}</td>
+                  <td class="propios">{{=i[1]}}</td>
+                  <td class="propios">{{=i[2]}}</td>
+              </tr>
+              {{pass}}
+          </table>
+
+        <div class="jumbotron jumbotron-fluid" style="padding:30px;word-wrap:break-word;">
+          <div class="container center">
+            Un ejemplo de web2py
+          </div>
+        </div>
+        {{elif 'content' in globals():}}
+        {{=content}}
+        {{else:}}
+        {{=BEAUTIFY(response._vars)}}
+        {{pass}}
+      </div>
+    </div>
 </pre>
