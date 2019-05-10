@@ -1,6 +1,7 @@
 # Ejercicio con web2py
 
 - en db.py
+<pre>
     db = DAL('sqlite://storage.sqlite')
     db.define_table('registration',
         Field('firstname', requires=IS_NOT_EMPTY()),
@@ -16,7 +17,7 @@
         Field('address', requires=IS_NOT_EMPTY()),
         Field('married', 'boolean'),
         Field('zip_code', requires=IS_NOT_EMPTY()))
-
+</pre>
 
 - en default.py para crear los formularios dinámicos
     def form_registration():
