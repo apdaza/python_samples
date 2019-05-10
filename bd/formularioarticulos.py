@@ -10,14 +10,23 @@ class FormularioArticulos:
     def __init__(self):
         self.articulo1=articulos.Articulos()
         self.ventana1=tk.Tk()
-        self.ventana1.geometry("800x600")
+        #self.ventana1.geometry("500x300")
         self.ventana1.title("Mantenimiento de artículos")
         self.cuaderno1 = ttk.Notebook(self.ventana1)
         self.carga_articulos()
         self.consulta_por_codigo()
         self.listado_completo()
+        self.acerca_de()
         self.cuaderno1.grid(column=0, row=0, padx=10, pady=10)
         self.ventana1.mainloop()
+
+    def acerca_de(self):
+        self.pag_acerca = ttk.Frame(self.cuaderno1)
+        self.cuaderno1.add(self.pag_acerca, text="Acerca de:")
+        self.label1 = ttk.Label(self.pag_acerca, text="Un ejemplo de conexión a sqlite", font=("Helvetica", 20))
+        self.label1.grid(column=0, row=0, padx=4, pady=4)
+        self.label2 = ttk.Label(self.pag_acerca, text="Curso de Python", font=("Helvetica", 30))
+        self.label2.grid(column=0, row=1, padx=4, pady=4)
 
     def carga_articulos(self):
         self.pagina1 = ttk.Frame(self.cuaderno1)
