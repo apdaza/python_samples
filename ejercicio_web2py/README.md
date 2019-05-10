@@ -20,6 +20,8 @@
 </pre>
 
 - en default.py para crear los formularios dinámicos
+
+<pre>
     def form_registration():
         form = SQLFORM(db.registration, request.args(0), deletable=True, upload=URL(r=request, f='download'))
         if form.accepts(request.vars, session):
@@ -47,27 +49,28 @@
                redirect(URL(r=request, f='form_a'))
         records = db().select(db.registration.ALL)
         return dict(form=form, records=records)
+</pre>
 
 - para crear las vistas se crean en views los archivos:
   - form_registration.html
-
+<pre>
     {{extend 'layout.html'}}
     <h5> User Registration Form </h5>
     <br  />
     {{=form}}
     <br  />
-
+</pre>
   - form_personal.html
-
+<pre>
     {{extend 'layout.html'}}
     <h5> User Registration Form </h5>
     <br  />
     {{=form}}
     <br  />
-
+</pre>
 
 - en default.py para crear las grid respectivas
-
+<pre>
     @auth.requires_login()
     def records_registration():
        records = SQLFORM.grid(db.registration, user_signature=True)
@@ -77,3 +80,4 @@
     def records_personal():
        records = SQLFORM.grid(db.personal, user_signature=True)
        return locals()
+</pre>
