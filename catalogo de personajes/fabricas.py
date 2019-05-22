@@ -49,12 +49,3 @@ class FabricaMagos(Fabrica):
 
     def crear_montura(self):
         return MonturaMago()
-
-def cambiar_fabrica(contador):
-    if contador == 0:
-        return FabricaElfos()
-    if contador == 1:
-        return FabricaMagos()
-    if contador == 2:
-        return FabricaBarbaros()
-    return FabricaEnanos()
