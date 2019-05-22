@@ -14,8 +14,6 @@ def game():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Catalogo de personajes")
     background_image = util.cargar_imagen('imagenes/fondo.jpg')
-    inicio_image = util.cargar_imagen('imagenes/inicio.jpg')
-    acerca_image = util.cargar_imagen('imagenes/acerca.jpg')
     pygame.mouse.set_visible(False)
 
     contador = 0
