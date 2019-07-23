@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+   <body>
+      <h1>Hello {{ name }}!</h1>
+      {% if name == 'admin' %}
+         <h2> You are admin </h2>
+         <table border = 1>
+         {% for key, value in dict.iteritems() %}
+            <tr>
+               <th> {{ key }} </th>
+               <td> {{ value }} </td>
+            </tr>
+         {% endfor %}
+      </table>
+      {% else %}
+         <h2> You are guest </h2>
+      {% endif %}
+
+   </body>
+</html>
