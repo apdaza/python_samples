@@ -1,6 +1,6 @@
 # ejemplos de recursividad en python
 
-1. calcular el producto de dos números mediantes sumas
+1. calcular el producto de dos números mediante sumas
 2. calcular la división de dos números sin dividir (restando)
 3. calcular la potencia de dos números
 4. calcular el término n de la serie de fibonacci
