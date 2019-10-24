@@ -1,6 +1,6 @@
 from ventiuna import *
 
-m, j = jugar(mazo(baraja()))
+m, j = jugar(mazo(baraja()), [], [])
 
 if m < j and j <= 21:
     print "el jugador gana"

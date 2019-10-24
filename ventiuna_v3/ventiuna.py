@@ -43,23 +43,15 @@ def mostrar_juego(mesa, jugador):
     print (evaluar(jugador))
     print ("")
 
-def jugar(mazo):
-    jugador = []
-    mesa = []
-    turno = "jugador"
+def jugar(mazo, mesa, jugador):
     if mazo == []:
         print("mazo vacio")
     else:
-        mesa += [mazo.pop(),mazo.pop()]
-        jugador += [mazo.pop(),mazo.pop()]
-        while True:
-            mostrar_juego(mesa, jugador)
-            if evaluar(jugador) < 21 and turno == "jugador":
-                if raw_input("desea otra carta: (s/n) ") == "s":
-                    jugador += [mazo.pop()]
-                else:
-                    turno = "mesa"
-            elif (evaluar(mesa) < evaluar(jugador) and evaluar(mesa) < 21 and evaluar(jugador) <= 21):
-		        mesa += [mazo.pop()]
-            else:
-                return evaluar(mesa), evaluar(jugador)
+        mostrar_juego(mesa, jugador)
+        if (len(jugador) < 2 and len(mesa) < 2):
+            return jugar(mazo[2:], mesa + [mazo[0]], jugador + [mazo[1]])
+        elif ((evaluar(jugador) < 18 or evaluar(jugador) <= evaluar(mesa)) and evaluar(mesa) <= 21):
+		    return jugar(mazo[1:], mesa, jugador + [mazo[0]])
+        elif (evaluar(mesa) < evaluar(jugador) and evaluar(mesa) < 21 and evaluar(jugador) <= 21):
+		    return jugar(mazo[1:], mesa + [mazo[0]], jugador)
+        return evaluar(mesa), evaluar(jugador)
