@@ -6,7 +6,7 @@ except ImportError:
     raise ImportError("Se requiere el modulo Tkinter")
 
 def prueba():
-    print("Se ha elegido la opcion" + variable.get())
+    print("Se ha elegido la opcion " + variable.get())
 
 root = tk.Tk()
 variable = tk.StringVar()

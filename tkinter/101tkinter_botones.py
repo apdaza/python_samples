@@ -34,4 +34,3 @@ boton_disabled = tk.Button(root, text="disabled", state="disabled",
 
 root.mainloop()
 
-root = tk.Tk()

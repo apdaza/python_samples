@@ -18,7 +18,10 @@ class AppHolaMundo:
         self.button.pack(side=RIGHT)
 
     def saludo(self, event):
-        self.cadena.set("Hola")
+        if self.cadena.get() != "":
+            self.cadena.set("Hola " + self.cadena.get())
+        else:
+            self.cadena.set("Ingresa el nombre, por favor")
 
 
 root = Tk()

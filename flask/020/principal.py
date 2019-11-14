@@ -17,7 +17,7 @@ def addrec():
          nm = request.form['nm']
          addr = request.form['add']
          city = request.form['city']
-         pin = request.form['pin']
+         pin = request.form['pin'] 
 
          with sql.connect("database.db") as con:
             cur = con.cursor()
@@ -52,18 +52,23 @@ def delete():
 @app.route("/deleterecord",methods = ["POST"])
 def deleterecord():
     id = request.form["id"]
+    try:
+       with sql.connect("database.db") as con:
+          cur = con.cursor()
 
-    with sql.connect("database.db") as con:
-        try:
-            cur = con.cursor()
-            cur.execute("delete from students where pin = ?",id)
-            con.commit()
-            msg = "record successfully deleted"
-        except:
-            con.rollback()
-            msg = "can't be deleted"
-        finally:
-            return render_template("delete_record.html",msg = msg)
+          cur.execute("delete from students where pin = ?",(id,) )
+
+          con.commit()
+          msg = "record successfully deleted"
+    except:
+       con.rollback()
+       msg = "error in deleted operation"
+
+    finally:
+       return render_template("delete_record.html",msg = msg)
+       con.close()
+    
+   
 
 if __name__ == '__main__':
    app.run(debug = True)

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+     <title>Students</title>
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/default.css') }}">
+   </head>
+   <body>
+      <nav>
+         <a href = "{{ url_for('show_all') }}">Show All Student</a> |
+         <a href = "{{ url_for('new') }}">Add Student</a>
+      </nav>
+
+      <aside>
+        {%- for message in get_flashed_messages() %}
+           {{ message }}
+        {%- endfor %}
+      </aside>
+      <section>      
+        <h3>Students</h3>
+
+        <table>
+           <thead>
+              <tr>
+                 <th>Name</th>
+                 <th>City</th>
+                 <th>Address</th>
+                 <th>Pin</th>
+                 <th colspan="2">Acctions</th>
+              </tr>
+           </thead>
+
+           <tbody>
+              {% for student in students %}
+                 <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.city }}</td>
+                    <td>{{ student.addr }}</td>
+                    <td>{{ student.pin }}</td>
+                    <td>
+                      <form method="POST" action="/update" style="display: inline">
+                        <input type="hidden" value="{{student.name}}" name="oldname">
+                        <input type="submit" value="Update">
+                      </form>
+                    </td>
+                    <td>
+                      <form method="POST" action="/delete" style="display: inline">
+                        <input type="hidden" value="{{student.name}}" name="oldname">
+                        <input type="submit" value="Delete">
+                      </form>
+                    </td>
+                 </tr>
+              {% endfor %}
+           </tbody>
+        </table>
+
+    </section>
+
+   </body>
+</html>

@@ -13,7 +13,7 @@ def uploader_file():
       f.save(secure_filename(f.filename))
       lista = [x.split(',') for x in open(f.filename).readlines()]
       print len(lista)
-      return render_template('showall.html', msg = "file loaded successfully", rows = lista[slice(1, 5, 2)])
+      return render_template('showall.html', msg = "file loaded successfully", rows = lista[slice(1, 7, 2)])
 
 if __name__ == '__main__':
    app.run(debug = True)
