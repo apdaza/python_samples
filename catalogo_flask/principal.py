@@ -2,13 +2,15 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, render_template, request
+from random import choice
 from fabricas import *
 
 app = Flask(__name__)
 
 @app.route('/')
 def principal():
-   fabrica = FabricaBarbaros()
+   fabricas = [FabricaElfos(), FabricaMagos(), FabricaEnanos(), FabricaBarbaros()]
+   fabrica = choice(fabricas)
    arma = fabrica.crear_arma()
    escudo = fabrica.crear_escudo()
    montura = fabrica.crear_montura()
