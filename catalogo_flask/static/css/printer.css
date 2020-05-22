@@ -1,0 +1,55 @@
+body {
+	background-color:#ffffff;
+}
+nav {
+	background-color:#aaaaaa;
+	color:#000000;
+	text-align: right;
+}
+aside {
+	float: right;
+	clear: none;
+	visibility:hidden;
+	display:none;
+}
+section {
+	background-color:#eeeeee;
+	border:2px solid;
+	border-color:#555555;
+	border-radius:15px;
+	margin:2em;
+	padding:1em;
+}
+header {
+	padding:0.5em;
+	color:#555555;
+	background-color:#eeeeee;
+	clear:left;
+}
+footer {
+	padding:0.1em;
+	color:#555555;
+	background-color:#eeeeee;
+	clear:left;
+}
+
+.code {
+	color:#000000;
+	background-color:#eeeeee;
+	border:2px solid;
+	border-radius:15px;
+	margin:2em;
+	padding:1em;
+	font-family:Arial;
+	font-size:0.9em;
+	font-style:italic;
+}
+
+.label {
+	width: 150px;
+	float: left;
+}
+.validate {
+	float: right;
+	padding:1em;
+}

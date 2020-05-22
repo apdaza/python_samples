@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+     <title>Data</title>
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/default.css') }}">
+   </head>
+   <body>
+      <nav>
+         <a href = "{{ url_for('upload_file') }}">Upload new file</a>
+      </nav>
+
+      <section>
+        <h3>{{ msg }}</h3>
+
+        <table>
+           <thead>
+              <tr>
+                 <th>Name</th>
+                 <th>ID</th>
+                 <th>Phone</th>
+                 <th>Mail</th>
+                 <th>Age</th>
+              </tr>
+           </thead>
+
+           <tbody>
+              {% for data in rows %}
+                 <tr>
+                    <td>{{ data[0] }}</td>
+                    <td>{{ data[1] }}</td>
+                    <td>{{ data[2] }}</td>
+                    <td>{{ data[3] }}</td>
+                    <td>{{ data[4] }}</td>
+                 </tr>
+              {% endfor %}
+           </tbody>
+        </table>
+
+    </section>
+
+   </body>
+</html>

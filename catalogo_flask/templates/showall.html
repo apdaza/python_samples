@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+     <title>Data</title>
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/default.css') }}">
+   </head>
+   <body>
+
+      <section>
+        <h3>{{ msg }}</h3>
+
+        <table>
+           <thead>
+              <tr>
+                 <th>Imagen</th>
+                 <th>Descripción</th>
+              </tr>
+           </thead>
+
+           <tbody>
+              {% for data in rows %}
+                 <tr>
+                    <td><img src="static/{{data[0]}}" alt="{{data[0]}}"/></td>
+                    <td>{{ data[1] }}</td>
+                 </tr>
+              {% endfor %}
+           </tbody>
+        </table>
+
+    </section>
+
+   </body>
+</html>
