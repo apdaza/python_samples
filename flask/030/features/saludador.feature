@@ -11,3 +11,4 @@ Scenario Outline: Get hello user
   | maria       | Hello maria as Guest    |
   | ana         | Hello ana as Guest    |
   | admin       | Hello Admin  |
+  | pedro       | Hello pedro as Guest |
