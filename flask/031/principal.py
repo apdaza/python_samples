@@ -1,4 +1,5 @@
-from flask import Flask, request, flash, url_for, redirect, render_template
+from flask import Flask, request, flash, url_for, redirect, render_template, session
+import json
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import inspect
 
@@ -44,12 +45,19 @@ class pregunta(db.Model):
 @app.route('/')
 def home():
    entidades = db.engine.table_names()
-   return render_template('home.html', entidades = entidades)
+   session['entidades'] = entidades
+   return render_template('home.html')
 
 @app.route('/list/<entidad>')
 def list(entidad):
    campos = inspector.get_columns(entidad)
-   return render_template('list.html', entidad = entidad, campos = campos )
+   nombres_campos = []
+   for c in campos:
+      nombres_campos.append(c['name'])
+
+   session['campos'] = nombres_campos
+   session['entidad'] = entidad
+   return render_template('list.html')
 
 if __name__ == '__main__':
    db.create_all()

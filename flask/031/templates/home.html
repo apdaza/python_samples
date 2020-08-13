@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
    <body>
-      {% for row in entidades %}
+      {% for row in session['entidades'] %}
       <a href = "/list/{{row}}">{{row}}</a><br>
       {% endfor %}
       

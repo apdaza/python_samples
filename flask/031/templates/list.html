@@ -1,12 +1,12 @@
 <!doctype html>
 <html>
    <body>
-      <h3>{{entidad}}</h3>
+      <h3>{{session['entidad']}}</h3>
 
-      {% for campo in campos %}
-         {{campo['name']}}<br>
+      {% for campo in session['campos'] %}
+         {{campo}}<br>
       {% endfor %}
 
-      <a href = "/">Go back to home page</a>
+      <br><a href = "/">Go back to home page</a>
    </body>
 </html>
