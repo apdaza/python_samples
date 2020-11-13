@@ -5,7 +5,7 @@
       {% if name == 'admin' %}
          <h2> You are admin </h2>
          <table border = 1>
-         {% for key, value in dict.iteritems() %}
+         {% for key, value in dict.items() %}
             <tr>
                <th> {{ key }} </th>
                <td> {{ value }} </td>

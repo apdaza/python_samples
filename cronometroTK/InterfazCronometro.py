@@ -1,4 +1,4 @@
-from Tkinter import *
+from tkinter import *
 from threading import *
 from time import sleep
 from Cronometro import *

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import Tkinter as tk
+import tkinter as tk
 
 import Punto as pt
 
@@ -43,12 +43,17 @@ class FormularioDistancia:
         self.ventana1.mainloop()
 
 
-    def agregar(self):
-        datos=(self.descripcioncarga.get(), self.preciocarga.get())
-        self.articulo1.alta(datos)
-        mb.showinfo("Información", "Los datos fueron cargados")
-        self.descripcion.set("")
-        self.precio.set("")
+    def calcular(self):
+        p1 = Punto()
+        p1.setX(int(self.x1))
+        p1.setY(int(self.y1))
+
+        p2 = Punto()
+        p2.setX(int(self.x2))
+        p2.setY(int(self.y2))
+
+        distancia = p1.calcular_distancia(p2)
+        
 
 
 

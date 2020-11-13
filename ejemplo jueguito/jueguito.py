@@ -68,9 +68,9 @@ def load_image(name):
 	""" carga una imagen controlando la existencia de la misma """
 	try: 
 		image = pygame.image.load(name)
-	except pygame.error, message:
-		print 'No se puede cargar la imagen: ', name
-		raise SystemExit, message
+	except (pygame.error, message):
+		print('No se puede cargar la imagen: ', name)
+		raise (SystemExit, message)
 
 	image = image.convert_alpha()
 	return image, image.get_rect()

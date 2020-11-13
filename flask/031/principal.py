@@ -41,6 +41,13 @@ class pregunta(db.Model):
       self.com_id = competencia
       self.tpr_id = tipo
 
+class evaluacion(db.Model):
+   id = db.Column('eva_id', db.Integer, primary_key = True)
+   eva_nombre = db.Column(db.String(120))
+
+class usuario(db.Model):
+   id = db.Column('usu_id', db.Integer, primary_key = True)
+   usu_nombre = db.Column(db.String(120))
 
 @app.route('/')
 def home():

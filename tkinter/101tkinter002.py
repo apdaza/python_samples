@@ -1,7 +1,7 @@
 import sys
 
 try:
-    import Tkinter as tk
+    import tkinter as tk
 except ImportError:
     raise ImportError("Se requiere el modulo Tkinter")
 

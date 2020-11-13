@@ -36,7 +36,7 @@ def game():
     tablero = Tablero()
     tablero.reiniciar((SCREEN_WIDTH, SCREEN_HEIGHT))
     director = Director()
-    director.setBuilder(ConstructorEsqueletos())
+    director.setBuilder(ConstructorHumanos())
 
     heroe = director.getHeroe()
     heroe.ubicar(tablero.pos_heroe)
