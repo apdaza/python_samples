@@ -7,6 +7,10 @@ class Cronometro:
 		self.h = Hora()
 		self.m = Minuto()
 		self.s = Segundo()
+		self.parado = False
+
+	def cambiarEstado(self):
+		self.parado = not self.parado
 
 	def avanzar(self):
 		self.s.avanzar()
@@ -16,5 +20,5 @@ class Cronometro:
 				self.h.avanzar()
 
 	def getTiempo(self):
-		return "{02d}:{02d}:{02d}".format(self.h.getValor(), self.m.getValor(), self.s.getValor())
-		#str(self.h.getValor())+":"+str(self.m.getValor())+":"+str(self.s.getValor())
+		return "{:02d}:{:02d}:{:02d}".format(self.h.getValor(), self.m.getValor(), self.s.getValor())
+		

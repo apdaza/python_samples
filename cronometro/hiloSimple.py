@@ -5,12 +5,12 @@ from time import *
 class MiHilo(Thread):
    def run(self):
 	   while True:
+		   sleep(20)
 		   mostrarTiempo(c)
 
 def mostrarTiempo(crono):
-	while crono.parado == False:
-		crono.avanzar()
-		print (crono.getTiempo())
+	crono.avanzar()
+	print (crono.getTiempo())
 		
 
 c = Cronometro()
