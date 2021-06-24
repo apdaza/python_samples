@@ -8,7 +8,7 @@ from matplotlib import pyplot as plt
 # %matplotlib notebook
 # Set the default figure size for all inline plots
 # (note: needs to be AFTER the %matplotlib magic)
-plt.rcParams['figure.figsize'] = [8, 5]
+plt.rcParams['figure.figsize'] = [28, 15]
 data = pd.read_csv('chat_performance_clean.csv')
 
 # Preview the first 5 lines of the loaded data
@@ -24,7 +24,7 @@ chats_per_user = chats_per_user.sort_values(
     ascending=False
 )
 # Preview the results
-print chats_per_user.head()
+print(chats_per_user.head())
 
 # Plotting directly from DataFrames with Pandas
 chats_per_user[0:20].plot(

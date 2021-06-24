@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Resultados de la carga</title></head>
+    <body>
+        <h3>Forma del dataset: {{ shape }}</h3>
+
+        {% for table in tables %}
+            {{titles[loop.index]}}
+            {{ table|safe }}
+        {% endfor %}
+
+        <img width="1000px" src="data:image/png;base64,{{figura}}">
+    </body>
+</html>
