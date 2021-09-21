@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h1>Listar Clientes</h1>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Teléfono</th>
+                <th>Direccion</th>
+                <th colspan="2">Acciones</th>
+            </tr>
+            {% for d in data %}
+            <tr>
+                <td>{{ d['nombre'] }}</td>
+                <td>{{ d['apellido'] }}</td>
+                <td>{{ d['telefono'] }}</td>
+                <td>{{ d['direccion'] }}</td>
+                <td>
+                    <a href="/editar/{{ d['_id']}}">editar</a>
+                </td>
+                <td>
+                    <a href="/eliminar/{{ d['_id']}}">eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/agregar">agregar cliente</a>
+    </body>
+</html>

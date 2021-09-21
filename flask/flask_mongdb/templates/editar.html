@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h1>Agregar clientes:</h1>
+        <form action="/editar/{{ data['_id'] }}" method="POST">
+            Nombre: <input type="text" name="nombre" value="{{ data['nombre'] }}"><br>
+            Apellido: <input type="text" name="apellido" value="{{ data['apellido'] }}"><br>
+            Dirección: <input type="text" name="direccion" value="{{ data['direccion'] }}"><br>
+            Teléfono: <input type="text" name="telefono" value="{{ data['telefono'] }}"><br>
+            <input type="submit">
+        </form>
+    </body>
+</html>
