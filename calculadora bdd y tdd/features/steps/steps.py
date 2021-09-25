@@ -26,3 +26,16 @@ def step_imp(context):
 @then('the {product:d} is ok')
 def step_imp(context, total):
     assert(total == context.total)
+
+@given('a {values} to substract')
+def step_imp(context, values):
+    context.calculadora = Calculadora()
+    context.values = values.split(',')
+
+@when('the calc substract the values')
+def step_imp(context):
+    context.total = context.calculadora.restar(int(context.values[0]),int(context.values[1]))
+
+@then('the {total:d} is ok')
+def step_imp(context, total):
+    assert(total == context.total)

@@ -23,3 +23,14 @@ Scenario Outline: obtener el producto total
     | 5,7      | 35     |
     | -1,3     | -3      |
     | 22,100    | 2200 |
+
+Scenario Outline: obtener el resultado de la resta
+    Given a <values> to substract
+    When the calc substract the values
+    Then the <total> is ok
+
+    Examples:
+        | values | total |
+        | 1,3  | -2  |
+        | -3,-2 | -1 |
+        | 5,2 | 3 |

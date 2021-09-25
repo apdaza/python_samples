@@ -8,3 +8,7 @@ class TestCalculadora:
     def test_resta(self):
         calculadora = Calculadora()
         assert 3 == calculadora.restar(5, 2)
+
+    def test_producto(self):
+        calculadora = Calculadora()
+        assert 15 == calculadora.multiplicar(5, 3)
