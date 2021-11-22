@@ -12,3 +12,7 @@ class TestCalculadora:
     def test_producto(self):
         calculadora = Calculadora()
         assert 15 == calculadora.multiplicar(5, 3)
+
+    def test_division(self):
+        calculadora = Calculadora()
+        assert 5 == calculadora.dividir(10, 2)
