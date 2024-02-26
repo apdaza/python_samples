@@ -12,5 +12,5 @@ c2.setValor2(n2)
 
 c.sumar()
 c2.restar()
-print c.getResultado()
-print c2.getResultado()
+print (c.getResultado())
+print (c2.getResultado())
