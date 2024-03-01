@@ -1,0 +1,95 @@
+<html><head>
+<title>Sistema de Gesti&oacute;n Acad&eacute;mica - Universidad Distrital 0.0.0.3</title>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+<link rel='shortcut icon' href='https://funcionarios.portaloas.udistrital.edu.co/academicopro/favicon.ico' />
+<link rel='stylesheet' type='text/css' href='https://funcionarios.portaloas.udistrital.edu.co/academicopro/estilo/basico/estilo.php' />
+<link rel='stylesheet' type='text/css' href='https://funcionarios.portaloas.udistrital.edu.co/academicopro/estilo/menu_condor/bootstrap_condor.css' />
+
+<body leftMargin='0' topMargin='0' class='fondoprincipal' style="font-family:"Arial"">
+<table class='tabla_general' width="100%">
+<tbody>
+<tr>
+<td valign='top' class='seccion_C_colapsada'>
+      <table width="100%" border="0" align="center" cellpadding="1 px" cellspacing="1px" >
+        <tbody>
+          <tr>
+            <td>
+              <table  width="100%" border="0" align="center" cellpadding="5 px" cellspacing="1px" >
+                <caption class="sigma centrar" style="background-color:#51abcb; color:white;"><b>DATOS DEL ESTUDIANTE</b></caption>
+                <tr>
+                  <td>
+                    <table width="100%"  cellspacing="1 px" cellpadding="1px" border="1px">
+                      <tr>
+                        <td style="border:0px" rowspan="15" colspan="6"><img src="../../personal.png">
+                        <td class='cuadro_plano' style="border:0px">Nombre: </td>
+                        <td class='cuadro_plano' style="border:0px">{{ entity['NOMBRE'] }}</td>
+                        <td class="cuadro_plano" style="border:0px" rowspan="2" colspan="6">
+                  </td>
+                </tr>
+                <tr>
+                  <td class='cuadro_plano' style="border:0px" width="20%">C&oacute;digo: </td>
+                  <td class='cuadro_plano' style="border:0px">{{ entity['CODIGO'] }}</td>
+                </tr>
+                <tr>
+                  <td class='cuadro_plano' style="border:0px">Carrera: </td>
+                  <td class='cuadro_plano' style="border:0px"><b>{{ entity['CODIGO_PROYECTO'] }} </b>{{ entity['NOMBRE_PROYECTO'] }}</td>
+                </tr>
+                <tr>
+                  <td class='cuadro_plano' style="border:0px">Plan de Estudios: </td>
+                  <td class='cuadro_plano' style="border:0px">{{ entity['PENSUM'] }}</td>
+                </tr>
+                <!--tr>
+                  <td class='cuadro_plano' style="border:0px">Modalidad: </td>
+                  <td class='cuadro_plano' style="border:0px">{{ entity['MODALIDAD'] }}</td>
+                </tr-->
+                <tr>
+                  <td class='cuadro_plano' style="border:0px">Identificaci&oacute;n: </td>
+                  <td class='cuadro_plano' style="border:0px"><b>{{ entity['TIPO_DOCUMENTO'] }} </b>{{ entity['IDENTIFICACION'] }}</td>
+                </tr>
+                <tr>
+                  <td class='cuadro_plano' style="border:0px">Tel&eacute;fono: </td>
+                  <td class='cuadro_plano' style="border:0px">{{ entity['TELEFONO'] }}</td>
+                </tr>
+                <tr>
+                  <td class='cuadro_plano' style="border:0px">E-Mail: </td>
+                  <td class='cuadro_plano' style="border:0px">{{ entity['EMAIL'] }}</td>
+                </tr>
+                <tr>
+                  <td class='cuadro_plano' style="border:0px">Fecha de nacimiento: </td>
+                  <td class='cuadro_plano' style="border:0px">{{ (entity['FEC_NACIMIENTO_MOSTRAR']|string())[:10] }}</td>
+                </tr>
+<!--                <tr>
+                  <td class='cuadro_plano' style="border:0px">Veces en Prueba: </td>
+                  <td class='cuadro_plano' style="border:0px"></td>
+                </tr>-->
+                <tr>
+                  <td class='cuadro_plano' style="border:0px">Estado Actual: </td>
+                  <td class='cuadro_plano' style="border:0px">{{ entity['DESC_ESTADO'] }}</td>
+                </tr>
+                
+                <tr>
+                  <td class='cuadro_plano' style="border:0px">Promedio Acumulado: </td>
+                  <td class='cuadro_plano' style="border:0px">{{ entity['PROMEDIO'] }}</td>
+                </tr>
+                                <tr>
+                  <td class='cuadro_plano' style="border:0px">Acuerdo: </td>
+                  <td class='cuadro_plano' style="border:0px">{{ (entity['ACUERDO']|string())[-3:] }} de {{ (entity['ACUERDO']|string())[:4] }}</td>
+                </tr>               
+                <tr>
+                  <td class='cuadro_plano' style="border:0px">Valor Matrícula: </td>
+                  <td class='cuadro_plano' style="border:0px">{{ entity['VALOR_MATRICULA'] }}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+ 
+<script language='JavaScript' type='text/javascript' src='https://funcionarios.portaloas.udistrital.edu.co/academicopro/funcion/tooltip.js'></script>
+</body>
+</html>
+
